@@ -14,11 +14,17 @@ module.exports = function(grunt) {
       myApp: {
         src: ['./css', './js/vendor', './fonts'],
         options: {
-          force: false
+          force: true
         }
       },
       js: {
         src: ['./js/myApp.js'],
+        options: {
+          force: true
+        }
+      },
+      seed: {
+        src: ['./css', './js/vendor', './fonts', './less/bootstrap', './img'],
         options: {
           force: true
         }
@@ -82,8 +88,9 @@ module.exports = function(grunt) {
             expand: true
           }, {
             src: '**/*.*',
-            src: './bower_components/bootstrap/less',
-            dest: './less/bootstrap'
+            dest: './less/bootstrap',
+            cwd: './bower_components/bootstrap/less',
+            expand: true
           }
         ]
       }
@@ -123,7 +130,7 @@ module.exports = function(grunt) {
         files: [{
           src: './less/styles/style.less',
           dest: './css/styles.css'
-        },{
+        }, {
           src: './less/bootstrap/bootstrap.less',
           dest: './css/bootstrap.css'
         }]
@@ -179,4 +186,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('firstrun', ['clean:myApp', 'copy:myApp']);
   grunt.registerTask('default', ['clean:js', 'jshint', 'less', 'requirejs', 'watch']);
+  grunt.registerTask('seedcommit', ['clean:seed']);
 };

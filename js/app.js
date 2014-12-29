@@ -13,7 +13,7 @@ define([
     //'myApp.filter',
     //'myApp.service',
     //'myApp.directive',
-    //'myApp.controller'
+    'myApp.controller'
   ]);
   return myApp;
 });

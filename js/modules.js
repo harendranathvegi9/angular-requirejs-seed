@@ -3,5 +3,5 @@ define([
   //'./filters/index',
   //'./services/index',
   //'./directives/index',
-  //'./controllers/index'
+  './controllers/index'
 ], function() {});

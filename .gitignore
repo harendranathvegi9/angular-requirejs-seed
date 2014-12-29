@@ -35,3 +35,5 @@ js/vendor/*.*
 
 # CSS Files
 css/*.css
+
+js/myApp.js
