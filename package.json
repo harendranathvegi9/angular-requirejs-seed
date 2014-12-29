@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.0.0",
   "description": "Angular RequireJs Seed Application",
+  "repository":"https://github.com/nisheedj/angular-requirejs-seed.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
