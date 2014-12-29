@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "<name_of_the_chrome_plugin>",
+  "description": "<description_of_the_chrome_plugin>",
+  "version": "0.1",
+  "permissions": [],
+  "background": {
+    "scripts": ["js/vendor/angular.min.js"]
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
