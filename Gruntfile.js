@@ -55,8 +55,7 @@ module.exports = function(grunt) {
           }, {
             src: './bower_components/angular-sanitize/angular-sanitize.min.js.map',
             dest: './js/vendor/angular-sanitize.min.js.map'
-          },
-          {
+          }, {
             src: './bower_components/angular-mocks/angular-mocks.js',
             dest: './js/vendor/angular-mocks.js'
           },
@@ -173,6 +172,12 @@ module.exports = function(grunt) {
           preserveLicenseComments: false
         }
       }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
+      }
     }
   });
 
@@ -187,8 +192,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-connect');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('firstrun', ['clean:myApp', 'copy:myApp']);
   grunt.registerTask('default', ['clean:js', 'jshint', 'less', 'requirejs', 'watch']);
   grunt.registerTask('seedcommit', ['clean:seed']);
+  grunt.registerTask('unit', ['karma:unit']);
 };
