@@ -33,6 +33,9 @@ bower_components
 # Vendor Files
 js/vendor/*.*
 
+# Coverage Files
+js/coverage
+
 # CSS Files
 css/*.css
 

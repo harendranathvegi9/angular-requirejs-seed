@@ -10,6 +10,10 @@ define(['./module'], function(controllerModule) {
       };
 
       $scope.app.appRepo = "https://github.com/nisheedj/angular-requirejs-seed.git";
+
+      $scope.getAuthorName = function(){
+        return $scope.app.author.name;
+      };
     }
   ]);
 });

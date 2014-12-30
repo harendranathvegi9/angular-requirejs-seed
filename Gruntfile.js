@@ -56,6 +56,10 @@ module.exports = function(grunt) {
             src: './bower_components/angular-sanitize/angular-sanitize.min.js.map',
             dest: './js/vendor/angular-sanitize.min.js.map'
           },
+          {
+            src: './bower_components/angular-mocks/angular-mocks.js',
+            dest: './js/vendor/angular-mocks.js'
+          },
           /*jquery*/
           {
             src: './bower_components/jquery/dist/jquery.min.js',
