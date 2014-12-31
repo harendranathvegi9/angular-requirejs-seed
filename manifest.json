@@ -5,10 +5,10 @@
   "version": "0.1",
   "permissions": [],
   "background": {
-    "scripts": ["js/vendor/angular.min.js"]
+    "scripts": ["app/js/vendor/angular.min.js"]
   },
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "chrome_url_overrides": {
-    "newtab": "index.html"
+    "newtab": "app/index.html"
   }
 }
