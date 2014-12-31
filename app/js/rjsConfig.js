@@ -7,6 +7,7 @@ require.config({
     jquery: 'vendor/jquery.min',
     angularroute: 'vendor/angular-route.min',
     angularsanitize: 'vendor/angular-sanitize.min',
+    angularanimate: 'vendor/angular-animate.min',
     underscore: 'vendor/underscore-min'
   },
   shim: {
@@ -18,6 +19,9 @@ require.config({
       deps: ['angular']
     },
     angularsanitize: {
+      deps: ['angular']
+    },
+    angularanimate: {
       deps: ['angular']
     },
     underscore: {

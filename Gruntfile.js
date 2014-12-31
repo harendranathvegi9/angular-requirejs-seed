@@ -56,8 +56,17 @@ module.exports = function(grunt) {
             src: './bower_components/angular-sanitize/angular-sanitize.min.js.map',
             dest: './app/js/vendor/angular-sanitize.min.js.map'
           }, {
+            src: './bower_components/angular-animate/angular-animate.min.js',
+            dest: './app/js/vendor/angular-animate.min.js'
+          }, {
+            src: './bower_components/angular-animate/angular-animate.min.js.map',
+            dest: './app/js/vendor/angular-animate.min.js.map'
+          }, {
             src: './bower_components/angular-mocks/angular-mocks.js',
             dest: './app/js/vendor/angular-mocks.js'
+          },{
+            src: './bower_components/angular-resource/angular-resource.js',
+            dest: './app/js/vendor/angular-resource.js'
           },
           /*jquery*/
           {
@@ -197,6 +206,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('firstrun', ['clean:myApp', 'copy:myApp']);
   grunt.registerTask('default', ['clean:js', 'jshint', 'less', 'requirejs', 'watch']);
-  grunt.registerTask('seedcommit', ['clean:seed']);
+  grunt.registerTask('seedcommit', ['clean:seed','clean:js']);
   grunt.registerTask('unit', ['karma:unit']);
 };

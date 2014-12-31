@@ -26,7 +26,9 @@ require.config({
     jquery: 'app/js/vendor/jquery.min',
     angularroute: 'app/js/vendor/angular-route.min',
     angularsanitize: 'app/js/vendor/angular-sanitize.min',
+    angularanimate: 'app/js/vendor/angular-animate.min',
     angularmocks: 'app/js/vendor/angular-mocks',
+    angularresource: 'app/js/vendor/angular-resource',
     underscore: 'app/js/vendor/underscore-min'
   },
   shim: {
@@ -40,7 +42,13 @@ require.config({
     angularsanitize: {
       deps: ['angular']
     },
+    angularanimate: {
+      deps: ['angular']
+    },
     angularmocks: {
+      deps: ['angular']
+    },
+    angularresource: {
       deps: ['angular']
     },
     underscore: {
