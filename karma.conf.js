@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: 'js',
+    basePath: './',
 
 
     // frameworks to use
@@ -13,14 +13,14 @@ module.exports = function(config) {
     frameworks: ['jasmine', 'requirejs'],
 
     // list of files / patterns to load in the browser
-    files: [
-      'test-main.js', {
-        pattern: '**/*.js',
+    files: [{
+        pattern: 'app/js/**/*.js',
         included: false
       }, {
-        pattern: 'test/**/*.spec.js',
+        pattern: 'tests/spec/**/*.spec.js',
         included: false
-      }
+      },
+      'tests/spec/main.js'
     ],
 
 
@@ -31,7 +31,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '!(tests|vendor)/**/*.js': ['coverage']
+      'app/js/!(vendor)/**/*.js': ['coverage']
     },
 
 

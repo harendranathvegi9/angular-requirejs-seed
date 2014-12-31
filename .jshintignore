@@ -1,3 +1,2 @@
-js/vendor/*.js
-js/coverage/**/*.js
-js/tests/**/*.spec.js
+app/js/vendor/*.js
+app/js/coverage/**/*.js

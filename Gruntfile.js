@@ -12,19 +12,19 @@ module.exports = function(grunt) {
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     clean: {
       myApp: {
-        src: ['./css', './js/vendor', './fonts'],
+        src: ['./app/css', './app/js/vendor', './app/fonts'],
         options: {
           force: true
         }
       },
       js: {
-        src: ['./js/myApp.js'],
+        src: ['./app/js/myApp.js'],
         options: {
           force: true
         }
       },
       seed: {
-        src: ['./css', './js/vendor', './fonts', './less/bootstrap', './img'],
+        src: ['./app/css', './app/js/vendor', './app/fonts', './app/less/bootstrap', './app/img'],
         options: {
           force: true
         }
@@ -36,62 +36,62 @@ module.exports = function(grunt) {
           /*Angular copy*/
           {
             src: './bower_components/angular/angular.min.js',
-            dest: './js/vendor/angular.min.js'
+            dest: './app/js/vendor/angular.min.js'
           }, {
             src: './bower_components/angular/angular.min.js.map',
-            dest: './js/vendor/angular.min.js.map'
+            dest: './app/js/vendor/angular.min.js.map'
           }, {
             src: './bower_components/angular/angular-csp.css',
-            dest: './css/angular-csp.css'
+            dest: './app/css/angular-csp.css'
           }, {
             src: './bower_components/angular-route/angular-route.min.js',
-            dest: './js/vendor/angular-route.min.js'
+            dest: './app/js/vendor/angular-route.min.js'
           }, {
             src: './bower_components/angular-route/angular-route.min.js.map',
-            dest: './js/vendor/angular-route.min.js.map'
+            dest: './app/js/vendor/angular-route.min.js.map'
           }, {
             src: './bower_components/angular-sanitize/angular-sanitize.min.js',
-            dest: './js/vendor/angular-sanitize.min.js'
+            dest: './app/js/vendor/angular-sanitize.min.js'
           }, {
             src: './bower_components/angular-sanitize/angular-sanitize.min.js.map',
-            dest: './js/vendor/angular-sanitize.min.js.map'
+            dest: './app/js/vendor/angular-sanitize.min.js.map'
           }, {
             src: './bower_components/angular-mocks/angular-mocks.js',
-            dest: './js/vendor/angular-mocks.js'
+            dest: './app/js/vendor/angular-mocks.js'
           },
           /*jquery*/
           {
             src: './bower_components/jquery/dist/jquery.min.js',
-            dest: './js/vendor/jquery.min.js'
+            dest: './app/js/vendor/jquery.min.js'
           }, {
             src: './bower_components/jquery/dist/jquery.min.map',
-            dest: './js/vendor/jquery.min.map'
+            dest: './app/js/vendor/jquery.min.map'
           },
           /*Require JS*/
           {
             src: './bower_components/requirejs/require.js',
-            dest: './js/vendor/require.js'
+            dest: './app/js/vendor/require.js'
           }, {
             src: './bower_components/almond/almond.js',
-            dest: './js/vendor/almond.js'
+            dest: './app/js/vendor/almond.js'
           },
           /*underscore*/
           {
             src: './bower_components/underscore/underscore-min.js',
-            dest: './js/vendor/underscore-min.js'
+            dest: './app/js/vendor/underscore-min.js'
           }, {
             src: './bower_components/underscore/underscore-min.map',
-            dest: './js/vendor/underscore-min.map'
+            dest: './app/js/vendor/underscore-min.map'
           },
           /*Bootstrap*/
           {
             src: '*.*',
-            dest: './fonts',
+            dest: './app/fonts',
             cwd: './bower_components/bootstrap/dist/fonts',
             expand: true
           }, {
             src: '**/*.*',
-            dest: './less/bootstrap',
+            dest: './app/less/bootstrap',
             cwd: './bower_components/bootstrap/less',
             expand: true
           }
@@ -126,29 +126,29 @@ module.exports = function(grunt) {
         },
         reporter: require('jshint-stylish')
       },
-      myApp: ['./Gruntfile.js', './js/**/*.js']
+      myApp: ['./Gruntfile.js', './app/js/**/*.js']
     },
     less: {
       myApp: {
         files: [{
-          src: './less/styles/style.less',
-          dest: './css/styles.css'
+          src: './app/less/styles/style.less',
+          dest: './app/css/styles.css'
         }, {
-          src: './less/bootstrap/bootstrap.less',
-          dest: './css/bootstrap.css'
+          src: './app/less/bootstrap/bootstrap.less',
+          dest: './app/css/bootstrap.css'
         }]
       }
     },
     watch: {
       scripts: {
-        files: ['./js/**/*.js'],
+        files: ['./app/js/**/*.js'],
         tasks: ['default'],
         options: {
           spawn: false
         }
       },
       styles: {
-        files: ['./less/**/*.less'],
+        files: ['./app/less/**/*.less'],
         tasks: ['default'],
         options: {
           spawn: false
@@ -157,16 +157,17 @@ module.exports = function(grunt) {
     },
     connect: {
       myApp: {
-        port: 9000
+        port: 9000,
+        base:'./app'
       }
     },
     requirejs: {
       js: {
         options: {
-          baseUrl: './js',
-          mainConfigFile: 'js/rjsConfig.js',
+          baseUrl: './app/js',
+          mainConfigFile: 'app/js/rjsConfig.js',
           deps: ['main', 'app', 'routes'],
-          out: 'js/myApp.js',
+          out: 'app/js/myApp.js',
           optimize: 'uglify2',
           name: './vendor/almond',
           preserveLicenseComments: false

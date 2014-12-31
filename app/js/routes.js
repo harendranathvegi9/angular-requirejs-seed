@@ -1,5 +1,5 @@
 /*global define*/
-define(['app'], function(app) {
+define(['./app'], function(app) {
   app.config(['$routeProvider',
     function($routeProvider) {
       $routeProvider.when('/',{

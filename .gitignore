@@ -35,6 +35,9 @@ js/vendor/*.*
 
 # Coverage Files
 js/coverage
+app/coverage
+coverage
+
 
 # CSS Files
 css/*.css

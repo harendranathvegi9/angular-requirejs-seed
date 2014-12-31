@@ -1,6 +1,6 @@
 var allTestFiles = [
-  './modules',
-  './app'
+  'app/js/app',
+  'app/js/routes'
 ];
 var TEST_REGEXP = /(spec|test)\.js$/i;
 
@@ -9,6 +9,7 @@ var pathToModule = function(path) {
 };
 
 Object.keys(window.__karma__.files).forEach(function(file) {
+  //console.log(window.__karma__.files);
   if (TEST_REGEXP.test(file)) {
     // Normalize paths to RequireJS module names.
     allTestFiles.push(pathToModule(file));
@@ -21,12 +22,12 @@ require.config({
   baseUrl: '/base',
 
   paths: {
-    angular: 'vendor/angular.min',
-    jquery: 'vendor/jquery.min',
-    angularroute: 'vendor/angular-route.min',
-    angularsanitize: 'vendor/angular-sanitize.min',
-    angularmocks: 'vendor/angular-mocks',
-    underscore: 'vendor/underscore-min'
+    angular: 'app/js/vendor/angular.min',
+    jquery: 'app/js/vendor/jquery.min',
+    angularroute: 'app/js/vendor/angular-route.min',
+    angularsanitize: 'app/js/vendor/angular-sanitize.min',
+    angularmocks: 'app/js/vendor/angular-mocks',
+    underscore: 'app/js/vendor/underscore-min'
   },
   shim: {
     angular: {
