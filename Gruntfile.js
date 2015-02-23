@@ -64,7 +64,7 @@ module.exports = function(grunt) {
           }, {
             src: './bower_components/angular-mocks/angular-mocks.js',
             dest: './app/js/vendor/angular-mocks.js'
-          },{
+          }, {
             src: './bower_components/angular-resource/angular-resource.js',
             dest: './app/js/vendor/angular-resource.js'
           },
@@ -109,30 +109,7 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        forin: true,
-        freeze: true,
-        immed: true,
-        indent: 2,
-        latedef: "nofunc",
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-          angular: true,
-          define: true,
-          jQuery: true,
-          $: true,
-          require: true,
-          console: true, //For Testing
-          _: true
-        },
+        jshintrc: true,
         reporter: require('jshint-stylish')
       },
       myApp: ['./Gruntfile.js', './app/js/**/*.js']
@@ -167,7 +144,7 @@ module.exports = function(grunt) {
     connect: {
       myApp: {
         port: 9000,
-        base:'./app'
+        base: './app'
       }
     },
     requirejs: {
@@ -206,6 +183,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('firstrun', ['clean:myApp', 'copy:myApp']);
   grunt.registerTask('default', ['clean:js', 'jshint', 'less', 'requirejs', 'watch']);
-  grunt.registerTask('seedcommit', ['clean:seed','clean:js']);
+  grunt.registerTask('seedcommit', ['clean:seed', 'clean:js']);
   grunt.registerTask('unit', ['karma:unit']);
 };
