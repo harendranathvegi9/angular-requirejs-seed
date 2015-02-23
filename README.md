@@ -6,14 +6,8 @@ Run `bower install`
 
 Run `npm install`
 
-Run `grunt firstrun`
+Run `grunt` and follow the on-screen commands
 
-You are now set to code and enjoy the seed application
-
-Run `grunt` to compile the code
-
-Run `grunt connect` to serve files at `http://localhost:9000`
-
-Run `grunt unit` to run unit tests
+Run `npm start` to run a node server to mock api's
 
 Documentation coming soon...
