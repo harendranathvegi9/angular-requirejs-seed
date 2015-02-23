@@ -5,106 +5,107 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     clean: {
-      myApp: {
-        src: ['./app/css', './app/js/vendor', './app/fonts'],
-        options: {
-          force: true
-        }
-      },
-      js: {
-        src: ['./app/js/myApp.js'],
-        options: {
-          force: true
-        }
-      },
       seed: {
-        src: ['./app/css', './app/js/vendor', './app/fonts', './app/less/bootstrap', './app/img'],
         options: {
           force: true
-        }
+        },
+        src: ['./app/css', './app/js/vendor', './app/fonts/bootstrap', './app/less/bootstrap', './app/js/build.js']
+      },
+      build: {
+        options: {
+          force: true
+        },
+        src: ['./app/css', './app/js/build.js']
       }
     },
     copy: {
-      myApp: {
-        files: [
-          /*Angular copy*/
-          {
-            src: './bower_components/angular/angular.min.js',
-            dest: './app/js/vendor/angular.min.js'
-          }, {
-            src: './bower_components/angular/angular.min.js.map',
-            dest: './app/js/vendor/angular.min.js.map'
-          }, {
-            src: './bower_components/angular/angular-csp.css',
-            dest: './app/css/angular-csp.css'
-          }, {
-            src: './bower_components/angular-route/angular-route.min.js',
-            dest: './app/js/vendor/angular-route.min.js'
-          }, {
-            src: './bower_components/angular-route/angular-route.min.js.map',
-            dest: './app/js/vendor/angular-route.min.js.map'
-          }, {
-            src: './bower_components/angular-sanitize/angular-sanitize.min.js',
-            dest: './app/js/vendor/angular-sanitize.min.js'
-          }, {
-            src: './bower_components/angular-sanitize/angular-sanitize.min.js.map',
-            dest: './app/js/vendor/angular-sanitize.min.js.map'
-          }, {
-            src: './bower_components/angular-animate/angular-animate.min.js',
-            dest: './app/js/vendor/angular-animate.min.js'
-          }, {
-            src: './bower_components/angular-animate/angular-animate.min.js.map',
-            dest: './app/js/vendor/angular-animate.min.js.map'
-          }, {
-            src: './bower_components/angular-mocks/angular-mocks.js',
-            dest: './app/js/vendor/angular-mocks.js'
-          }, {
-            src: './bower_components/angular-resource/angular-resource.js',
-            dest: './app/js/vendor/angular-resource.js'
-          },
-          /*jquery*/
-          {
-            src: './bower_components/jquery/dist/jquery.min.js',
-            dest: './app/js/vendor/jquery.min.js'
-          }, {
-            src: './bower_components/jquery/dist/jquery.min.map',
-            dest: './app/js/vendor/jquery.min.map'
-          },
-          /*Require JS*/
-          {
-            src: './bower_components/requirejs/require.js',
-            dest: './app/js/vendor/require.js'
-          }, {
-            src: './bower_components/almond/almond.js',
-            dest: './app/js/vendor/almond.js'
-          },
-          /*underscore*/
-          {
-            src: './bower_components/underscore/underscore-min.js',
-            dest: './app/js/vendor/underscore-min.js'
-          }, {
-            src: './bower_components/underscore/underscore-min.map',
-            dest: './app/js/vendor/underscore-min.map'
-          },
-          /*Bootstrap*/
-          {
-            src: '*.*',
-            dest: './app/fonts',
-            cwd: './bower_components/bootstrap/dist/fonts',
-            expand: true
-          }, {
-            src: '**/*.*',
-            dest: './app/less/bootstrap',
-            cwd: './bower_components/bootstrap/less',
-            expand: true
-          }
-        ]
+      seed: {
+        files: [{
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/bootstrap/dist/fonts',
+          src: '**',
+          dest: './app/fonts/bootstrap'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/bootstrap/less',
+          src: '**',
+          dest: './app/less/bootstrap'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/bootstrap/dist/js',
+          src: 'bootstrap.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular',
+          src: 'angular.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-route',
+          src: 'angular-route.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-animate',
+          src: 'angular-animate.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-sanitize',
+          src: 'angular-sanitize.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-mocks',
+          src: 'angular-mocks.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-resource',
+          src: 'angular-resource.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/angular-bindonce',
+          src: 'bindonce.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/jquery/dist',
+          src: '**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/requirejs',
+          src: 'require.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/almond',
+          src: 'almond.**',
+          dest: './app/js/vendor'
+        }, {
+          expand: true,
+          nonull: true,
+          cwd: './bower_components/underscore',
+          src: 'underscore**',
+          dest: './app/js/vendor'
+        }]
       }
     },
     jshint: {
@@ -112,48 +113,60 @@ module.exports = function(grunt) {
         jshintrc: true,
         reporter: require('jshint-stylish')
       },
-      myApp: ['./Gruntfile.js', './app/js/**/*.js']
+      build: ['./Gruntfile.js', './app/js/**/*.js']
     },
     less: {
-      myApp: {
-        files: [{
-          src: './app/less/styles/style.less',
-          dest: './app/css/styles.css'
-        }, {
-          src: './app/less/bootstrap/bootstrap.less',
-          dest: './app/css/bootstrap.css'
-        }]
+      bootstrap: {
+        options: {
+          compress: true,
+          modifyVars: {
+            'icon-font-path': '"../fonts/bootstrap/"',
+            'border-radius-base': '0',
+            'border-radius-large': '0',
+            'border-radius-small': '0'
+          }
+        },
+        files: {
+          './app/css/bootstrap.min.css': './app/less/bootstrap/bootstrap.less'
+        }
+      },
+      buildDev: {
+        files: {
+          './app/css/styles.css': './app/less/styles/styles.less'
+        }
+      },
+      buildProd: {
+        options: {
+          compress: true
+        },
+        files: {
+          './app/css/styles.min.css': './app/less/styles/styles.less'
+        }
       }
     },
     watch: {
-      scripts: {
-        files: ['./app/js/**/*.js'],
-        tasks: ['default'],
+      seed: {
         options: {
-          spawn: false
-        }
-      },
-      styles: {
-        files: ['./app/less/**/*.less'],
-        tasks: ['default'],
-        options: {
-          spawn: false
-        }
+          spawn: false,
+          livereload: true
+        },
+        files: ['./app/js/**/*.js', './app/less/**/*.less'],
+        tasks: ['build']
       }
     },
     connect: {
-      myApp: {
+      seed: {
         port: 9000,
         base: './app'
       }
     },
     requirejs: {
-      js: {
+      seed: {
         options: {
           baseUrl: './app/js',
           mainConfigFile: 'app/js/rjsConfig.js',
           deps: ['main', 'app', 'routes'],
-          out: 'app/js/myApp.js',
+          out: 'app/js/build.js',
           optimize: 'uglify2',
           name: './vendor/almond',
           preserveLicenseComments: false
@@ -169,20 +182,43 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-connect');
   grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('firstrun', ['clean:myApp', 'copy:myApp']);
-  grunt.registerTask('default', ['clean:js', 'jshint', 'less', 'requirejs', 'watch']);
-  grunt.registerTask('seedcommit', ['clean:seed', 'clean:js']);
-  grunt.registerTask('unit', ['karma:unit']);
+
+  grunt.registerTask('default', 'Show Default Message', function() {
+    grunt.log.ok(['Please use `grunt first` to create the initial folder structure']);
+    grunt.log.ok(['Please use `grunt build` to create and reload the app']);
+    grunt.log.ok(['Please use `grunt serve` to serve the files @ localhost:9000']);
+    grunt.log.ok(['Please use `grunt unit` to run unit tests using karma']);
+  });
+
+  grunt.registerTask('first', 'Create folders and copy files', function() {
+    grunt.log.ok(['Creating initial folder structure and copying  files']);
+    grunt.task.run(['clean:seed', 'copy:seed', 'less:bootstrap']);
+  });
+
+  grunt.registerTask('build', 'Create build files', function() {
+    grunt.log.ok(['Creating build files']);
+    grunt.task.run(['less:buildDev', 'less:buildProd', 'jshint', 'requirejs:seed', 'watch:seed']);
+  });
+
+  grunt.registerTask('serve', 'Serve the files @ localhost:9000', function() {
+    grunt.log.ok(['Serving files @ localhost:9000']);
+    grunt.log.ok(['Use Ctrl + c to stop the server']);
+    grunt.task.run(['connect:seed::keepalive']);
+  });
+
+  grunt.registerTask('unit', 'Run unit tests', function() {
+    grunt.log.ok(['Running Unit Tests']);
+    grunt.task.run(['karma:unit']);
+  });
+
 };
