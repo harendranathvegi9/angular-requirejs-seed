@@ -8,6 +8,7 @@ require.config({
     angularroute: 'vendor/angular-route.min',
     angularsanitize: 'vendor/angular-sanitize.min',
     angularanimate: 'vendor/angular-animate.min',
+    bindonce: 'vendor/bindonce.min',
     underscore: 'vendor/underscore-min'
   },
   shim: {
@@ -19,6 +20,9 @@ require.config({
       deps: ['angular']
     },
     angularsanitize: {
+      deps: ['angular']
+    },
+    bindonce: {
       deps: ['angular']
     },
     angularanimate: {

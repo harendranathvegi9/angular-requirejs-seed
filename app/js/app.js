@@ -5,6 +5,7 @@ define([
   'angularroute',
   'angularsanitize',
   'angularanimate',
+  'bindonce',
   'underscore',
   './modules'
 ], function(angular) {
